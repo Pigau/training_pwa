@@ -1,7 +1,7 @@
 
 let cacheManager = {
 
-    appCacheKey: 'static-assets-v4',
+    appCacheKey: 'static-assets-v2',
     dynamicCacheKey: 'dynamic-assets-v2',
     fallbackPage: null,
     cacheSizeLimit: 20,
@@ -25,16 +25,14 @@ let cacheManager = {
     get: function (request) {
         return caches.match(request)
             .then(
-                result => result || fetch(request).then(this.saveDynamicCache.bind(this))
+                result => result || fetch(request).then(this.saveDynamicCache.bind(this, request.url))
             )
             .catch(() => request.url.indexOf('.html') > -1 ? caches.match(this.fallbackPage) : null);
     },
 
-    saveDynamicCache: function (response) {
+    saveDynamicCache: function (url, response) {
         let data = response.clone();
-        caches.open(this.dynamicCacheKey).then(
-            cache => cache.put(data.url, data)
-        );
+        caches.open(this.dynamicCacheKey).then(cache => cache.put(url, data));
         this.limitCacheSize();
         return response;
     },
@@ -82,7 +80,9 @@ let myServiceWorker = {
     },
 
     fetch: function (event) {
-        event.respondWith(this.cacheManager.get(event.request));
+        if (event.request.url.indexOf('firestore.googleapis.com') === -1) {
+            event.respondWith(this.cacheManager.get(event.request));
+        }
     }
 };
 

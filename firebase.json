@@ -1,0 +1,13 @@
+{
+  "hosting": {
+    "public": "./",
+    "ignore": [
+      ".firebaserc",
+      "**/.git/**",
+      ".gitignore",
+      "**/.idea/**",
+      "docker-compose.yml",
+      "firebase.json"
+    ]
+  }
+}
