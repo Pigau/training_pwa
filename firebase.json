@@ -2,13 +2,15 @@
   "hosting": {
     "public": "./",
     "ignore": [
+      "docker-compose.yml",
       ".firebaserc",
       "**/.git/**",
       ".gitignore",
       "**/.idea/**",
-      "docker-compose.yml",
       "firebase.json",
-      "sw_backup.js"
+      "sw_backup.js",
+      "**/node_modules/**",
+      "package*.json"
     ]
   }
 }

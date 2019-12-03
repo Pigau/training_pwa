@@ -5,12 +5,13 @@
   "main": "index.html",
   "dependencies": {},
   "devDependencies": {
+    "firebase-tools": "^7.8.1",
     "gulp": "^4.0.2",
     "workbox-build": "^4.3.1"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "gulp": "node node_modules/gulp/bin/gulp.js"
+    "build": "node node_modules/gulp/bin/gulp.js generate-service-worker",
+    "deploy": "node node_modules/firebase-tools/lib/bin/firebase.js deploy"
   },
   "repository": {
     "type": "git",
