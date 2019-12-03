@@ -7,7 +7,8 @@
       ".gitignore",
       "**/.idea/**",
       "docker-compose.yml",
-      "firebase.json"
+      "firebase.json",
+      "sw_backup.js"
     ]
   }
 }

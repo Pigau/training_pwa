@@ -81,7 +81,7 @@ let myServiceWorker = {
 
     fetch: function (event) {
         if (event.request.url.indexOf('firestore.googleapis.com') === -1) {
-            event.respondWith(this.cacheManager.get(event.request));
+            // event.respondWith(this.cacheManager.get(event.request));
         }
     }
 };
