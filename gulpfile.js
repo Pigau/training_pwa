@@ -25,7 +25,7 @@ gulp.task('generate-service-worker', () => {
                     }
                 }
             ],
-            swDest: `${dist}/sw.js`
+            swDest: `${dist}/cache-sw.js`
         })
         .then(({warnings}) => {
             // In case there are any warnings from workbox-build, log them.

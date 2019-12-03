@@ -1,3 +1,5 @@
+importScripts('https://www.gstatic.com/firebasejs/7.5.0/firebase-app.js');
+importScripts('https://www.gstatic.com/firebasejs/7.5.0/firebase-messaging.js');
 
 // Your web app's Firebase configuration
 var firebaseConfig = {
@@ -11,10 +13,4 @@ var firebaseConfig = {
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
-
-if ('serviceWorker' in navigator) {
-    navigator.serviceWorker
-        .register('/cache-sw.js')
-        .then((reg) => console.log('service worker registered', reg))
-        .catch((error) => console.log('service worker not registered', error));
-}
+const messaging = firebase.messaging();
